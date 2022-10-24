@@ -1,0 +1,8 @@
+.course-title{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.course-title:hover{
+    color: yellowgreen
+}
