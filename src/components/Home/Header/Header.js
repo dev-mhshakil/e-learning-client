@@ -39,10 +39,10 @@ const Header = () => {
                 <Link>Contact</Link>
               </li>
               <li>
-                <Link>Sign In</Link>
+                <Link to="/login">Sign In</Link>
               </li>
               <li>
-                <Link>Sign Up</Link>
+                <Link to="/register">Sign Up</Link>
               </li>
             </ul>
           </div>
@@ -65,8 +65,12 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn-sign-in">Sign In</Link>
-          <Link className="btn">Sign Up</Link>
+          <Link to="/login" className="btn-sign-in">
+            Sign In
+          </Link>
+          <Link to="/register" className="btn">
+            Sign Up
+          </Link>
         </div>
       </div>
     </div>
