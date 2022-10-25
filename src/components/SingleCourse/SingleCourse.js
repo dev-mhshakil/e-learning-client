@@ -1,12 +1,11 @@
 import React from "react";
 import { IoIosTimer } from "react-icons/io";
 import { HiOutlineBookOpen, HiStar } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const SingleCourse = ({ course }) => {
   const { id, title, imgURL, author, fees, rating, courseTime, modules } =
     course;
-
-  const handleDetails = () => {};
 
   return (
     <div>
@@ -38,14 +37,9 @@ const SingleCourse = ({ course }) => {
             </p>
           </div>
           <div className="">
-            <button
-              onClick={() => {
-                handleDetails(id);
-              }}
-              className="btn btn-primary w-full"
-            >
-              Details
-            </button>
+            <Link to={`/courses/${id}`}>
+              <button className="btn btn-primary w-full">Details</button>
+            </Link>
           </div>
         </div>
       </div>

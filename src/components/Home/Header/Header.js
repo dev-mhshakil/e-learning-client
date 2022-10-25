@@ -6,7 +6,7 @@ import eLearning from "../../../assets/images/eLearning.png";
 const Header = () => {
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-green-600 text-white ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Header = () => {
               <li>
                 <Link>Contact</Link>
               </li>
-              <li>
+              <li className="sm:hidden lg:block">
                 <Link to="/login">Sign In</Link>
               </li>
               <li>
