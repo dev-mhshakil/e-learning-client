@@ -1,13 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const { googleSignIn, signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => console.error("error", error));
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error("error", error));
+  };
+
   return (
     <div>
       <div className="login-box">
         <h3>Login</h3>
-        <form className="login-form">
+        <form onSubmit={handleSubmit} className="login-form">
           <input
             type="email"
             name="email"
@@ -20,6 +54,9 @@ const Login = () => {
             placeholder="Password"
             required
           />
+          <button className="btn-login" type="submit">
+            Login
+          </button>
         </form>
         <div className="forget-section">
           <div>
@@ -28,7 +65,7 @@ const Login = () => {
           </div>
           <Link className="forget-password underline">Forget Password</Link>
         </div>
-        <button className="btn-login">Login</button>
+
         <p className="create-acc-sec">
           Don't have an account?{" "}
           <Link className="create-acc-text">Create an sccount</Link>
@@ -41,8 +78,17 @@ const Login = () => {
         <hr />
       </div>
       <div className="login-with-popup flex flex-col gap-4 items-center mt-5">
-        <button>Continue with Google</button>
-        <button>Continue with GitHub</button>
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center justify-center"
+        >
+          <FcGoogle></FcGoogle>
+          <span className="ml-2">Continue with Google</span>
+        </button>
+        <button className="flex items-center justify-center">
+          <FaGithub></FaGithub>
+          <span className="ml-2">Continue with GitHub</span>
+        </button>
       </div>
     </div>
   );
