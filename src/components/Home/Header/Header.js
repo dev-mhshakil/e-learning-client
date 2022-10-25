@@ -1,79 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import eLearning from "../../../assets/images/eLearning.png";
+import { AuthContext } from "../../../contexts/AuthProvider";
+import { Navbar } from "flowbite-react";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error("error", error));
+  };
+
   return (
-    <div>
-      <div className="navbar bg-green-600 text-white ">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link to="/courses">Courses</Link>
-              </li>
-              <li>
-                <Link>Blog</Link>
-              </li>
-              <li>
-                <Link>Contact</Link>
-              </li>
-              <li className="sm:hidden lg:block">
-                <Link to="/login">Sign In</Link>
-              </li>
-              <li>
-                <Link to="/register">Sign Up</Link>
-              </li>
-            </ul>
-          </div>
-          <img src={eLearning} className="header-logo" alt="" />
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            E-Learning
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li>
-              <Link to="/courses">Courses</Link>
-            </li>
-            <li>
-              <Link>Blog</Link>
-            </li>
-            <li>
-              <Link>Contact</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-end">
-          <Link to="/login" className="btn-sign-in">
-            Sign In
-          </Link>
-          <Link to="/register" className="btn">
-            Sign Up
-          </Link>
-        </div>
-      </div>
-    </div>
+    <Navbar fluid={true} rounded={true} className="text">
+      <Navbar.Brand href="/">
+        <img src={eLearning} className="w-32" alt="eLearning Logo" />
+        <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
+          E-Learning
+        </span>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+      <Navbar.Collapse className="mr-5">
+        <Link to="/" className="text-xl">
+          Home
+        </Link>
+        <Link to="/courses" className="text-xl">
+          Courses
+        </Link>
+        <Link to="/blog" className="text-xl">
+          Blog
+        </Link>
+        {user ? (
+          <>
+            <p className="text-xl">{user?.displayName}</p>
+            <img className="w-7 rounded-full" src={user?.photoURL} alt="" />
+            <Link onClick={handleLogOut} className="text-xl">
+              Sign Out
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="text-xl">
+              Sign In
+            </Link>
+            <Link to="/register" className="text-xl">
+              Sign Up
+            </Link>
+          </>
+        )}
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

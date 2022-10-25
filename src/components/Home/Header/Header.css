@@ -5,9 +5,10 @@
 .btn-sign-in{
     margin-right: 15px;
     font-weight: 500;
+   width: 80px;
 }
 
 .btn-sign-in:hover{
-    color: blue;
+    color: orange;
 }
 

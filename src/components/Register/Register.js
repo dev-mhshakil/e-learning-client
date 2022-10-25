@@ -82,7 +82,10 @@ const Register = () => {
           <FcGoogle></FcGoogle>
           <span className="ml-2">Continue with Google</span>
         </button>
-        <button className="flex items-center justify-center" type="submit">
+        <button
+          className="flex items-center justify-center mb-20"
+          type="submit"
+        >
           <FaGithub></FaGithub>
           <span className="ml-2">Continue with GitHub</span>
         </button>
