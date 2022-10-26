@@ -35,8 +35,10 @@ const Header = () => {
         </Link>
         {user ? (
           <>
-            <p className="text-xl">{user?.displayName}</p>
-            <img className="w-7 rounded-full" src={user?.photoURL} alt="" />
+            <div className="tooltip" data-tip={user?.displayName}>
+              <img className="w-7 rounded-full" src={user?.photoURL} alt="" />
+            </div>
+
             <Link onClick={handleLogOut} className="text-xl">
               Sign Out
             </Link>

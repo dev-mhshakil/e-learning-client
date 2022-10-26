@@ -3,10 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
-import toast from "react-hot-toast";
 
 const Login = () => {
-  const { googleSignIn, signIn, setLoading } = useContext(AuthContext);
+  const { googleSignIn, signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -27,20 +26,11 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setError("");
-        if (user.emailVerified) {
-          navigate(from, { replace: true });
-        } else {
-          toast.error(
-            "Email is not verified. Please verify your email address."
-          );
-        }
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error("error", error);
         setError(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   };
 
@@ -49,6 +39,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => setError(error.message));
   };
