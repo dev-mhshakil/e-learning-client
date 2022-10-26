@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import LeftSide from "../LeftSideCourseMenu/LeftSide";
 import SingleCourse from "../SingleCourse/SingleCourse";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Courses = () => {
   const courses = useLoaderData();
-  console.log(courses);
+  // console.log(courses);
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className="grid lg:grid-cols-5 sm:grid-cols-1 gap-4 mt-10 ">
       <div className=" w-9/12 mx-auto ">
@@ -15,7 +22,7 @@ const Courses = () => {
               <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">
                 Courses
               </h2>
-              <div className="flex flex-col space-y-1">
+              <div className="flex flex-col gap-5">
                 {courses.map((course) => (
                   <LeftSide key={course.id} course={course}></LeftSide>
                 ))}
@@ -24,7 +31,7 @@ const Courses = () => {
           </nav>
         </aside>
       </div>
-      <div className="col-span-4 grid lg:grid-cols-3 sm:grid-cols-1  gap-4">
+      <div className="col-span-4 grid lg:grid-cols-3 sm:grid-cols-1 gap-4">
         {courses.map((course) => (
           <SingleCourse key={course.id} course={course}></SingleCourse>
         ))}

@@ -62,7 +62,7 @@ const Header = () => {
             <span className="relative">
               <input id="Toggle2" type="checkbox" className="hidden peer" />
               <div className="w-10 h-4 rounded-full shadow bg-gray-600 peer-checked:dark:bg-violet-400"></div>
-              <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto bg-violet-400"></div>
+              <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto bg-success"></div>
             </span>
             <span>Dark</span>
           </label>
