@@ -4,11 +4,11 @@ This project was designed by Tailwind CSS. [DaisyUI, Flowbite, Mamba UI]
 
 ## Live Project
 
-Open [](http://localhost:3000) to view it in your browser.
+Open [https://e-learning-fde49.web.app/](https://e-learning-fde49.web.app/) to view it in your browser.
 
 ## Data Server
 
-Open []() to view server in your browser.
+Open [https://e-learning-server-sand.vercel.app/](https://e-learning-server-sand.vercel.app/) to view server in your browser.
 
 ## Features
 
