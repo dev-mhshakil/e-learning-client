@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex justify-center items-center">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-slate-200 text-black">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
@@ -133,7 +133,7 @@ const Login = () => {
             </svg>
           </button>
         </div>
-        <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+        <p className="text-xs text-center sm:px-6 dark:text-gray-400 ">
           Don't have an account?
           <Link
             rel="noopener noreferrer"
