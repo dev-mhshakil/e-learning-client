@@ -5,9 +5,9 @@ import "./LeftSide.css";
 const LeftSide = ({ course }) => {
   const { id, title } = course;
   return (
-    <div className="mb-10">
-      <Link to={`/courses/${id}`} className="course-title">
-        {title}
+    <div>
+      <Link rel="noopener noreferrer" to={`/courses/${id}`}>
+        <button className="btn btn-outline btn-success w-40">{title}</button>
       </Link>
     </div>
   );

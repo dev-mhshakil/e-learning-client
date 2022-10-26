@@ -38,7 +38,9 @@ const SingleCourse = ({ course }) => {
           </div>
           <div className="">
             <Link to={`/courses/${id}`}>
-              <button className="btn btn-primary w-full">Details</button>
+              <button className="btn btn-outline btn-success w-full">
+                Details
+              </button>
             </Link>
           </div>
         </div>

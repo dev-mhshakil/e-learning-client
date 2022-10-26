@@ -1,15 +1,21 @@
-import React from "react";
+import React, { createRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./CourseDetails.css";
+import { FaFileDownload } from "react-icons/fa";
 
 const CourseDetails = () => {
   const course = useLoaderData();
+
+  const ref = createRef();
 
   const { id, imgURL, title, fees, details, author, courseTime, modules } =
     course;
   console.log(course);
   return (
     <div className="w-9/12 mx-auto mt-10">
+      <h1 className="text-4xl mb-5 flex justify-center items-center">
+        Course: <span className="text-warning font-semibold ml-3">{title}</span>
+      </h1>
       <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-10 ">
         <div>
           <img className="h-[500px] w-full" src={imgURL} alt="" />

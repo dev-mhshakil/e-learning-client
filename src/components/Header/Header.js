@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import eLearning from "../../../assets/images/eLearning.png";
-import { AuthContext } from "../../../contexts/AuthProvider";
+import eLearning from "../../assets/images/eLearning.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 import { Navbar } from "flowbite-react";
 
 const Header = () => {
@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar fluid={true} rounded={true} className="text">
+    <Navbar fluid={true} rounded={true}>
       <Navbar.Brand href="/">
         <img src={eLearning} className="w-32" alt="eLearning Logo" />
         <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
@@ -51,6 +51,20 @@ const Header = () => {
             </Link>
           </>
         )}
+        <div className="flex">
+          <label
+            htmlFor="Toggle2"
+            className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100"
+          >
+            <span>Light</span>
+            <span className="relative">
+              <input id="Toggle2" type="checkbox" className="hidden peer" />
+              <div className="w-10 h-4 rounded-full shadow bg-gray-600 peer-checked:dark:bg-violet-400"></div>
+              <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto bg-violet-400"></div>
+            </span>
+            <span>Dark</span>
+          </label>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );
