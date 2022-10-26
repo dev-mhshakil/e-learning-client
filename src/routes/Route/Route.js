@@ -25,7 +25,7 @@ export const routes = createBrowserRouter([
       {
         path: "/courses",
         loader: () =>
-          fetch("https://e-learning-server-sand.vercel.app//courses"),
+          fetch("https://e-learning-server-sand.vercel.app/courses"),
         element: <Courses></Courses>,
       },
       {
@@ -36,7 +36,7 @@ export const routes = createBrowserRouter([
         path: "/courses/:id",
         loader: ({ params }) =>
           fetch(
-            `https://e-learning-server-sand.vercel.app//courses/${params.id}`
+            `https://e-learning-server-sand.vercel.app/courses/${params.id}`
           ),
         element: <CourseDetails></CourseDetails>,
       },
@@ -44,7 +44,7 @@ export const routes = createBrowserRouter([
         path: "/checkout/courses/:id",
         loader: ({ params }) =>
           fetch(
-            `https://e-learning-server-sand.vercel.app//checkout/courses/${params.id}`
+            `https://e-learning-server-sand.vercel.app/checkout/courses/${params.id}`
           ),
         element: (
           <PrivateRoute>
