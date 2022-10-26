@@ -135,7 +135,7 @@ const Register = () => {
             />
           </div>
           <button
-            className="block w-full p-3 text-center rounded-sm border-2 border-amber-500 hover:bg-slate-400 hover:border-amber-500"
+            className="block w-full p-3 text-center rounded-sm border-2 border-success hover:bg-slate-400 hover:border-success"
             type="submit"
           >
             Sign Up
@@ -184,7 +184,7 @@ const Register = () => {
           <Link
             rel="noopener noreferrer"
             to="/login"
-            className="underline dark:text-gray-100"
+            className="underline dark:text-gray-100 font-semibold ml-2"
           >
             Sign In
           </Link>

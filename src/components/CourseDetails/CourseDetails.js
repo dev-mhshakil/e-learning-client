@@ -55,7 +55,7 @@ const CourseDetails = () => {
                 Lessons: <span className="text-red-500">{modules}</span>
               </p>
               <p>
-                Course Time:{" "}
+                Course Time:
                 <span className="text-green-600">{courseTime}</span>
               </p>
             </div>

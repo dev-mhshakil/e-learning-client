@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import eLearning from "../../assets/images/eLearning.png";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -14,46 +14,72 @@ const Header = () => {
       .catch((error) => console.error("error", error));
   };
 
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      textDecoration: isActive ? "underline" : "none",
+      textDecorationColor: isActive ? "lime" : "black",
+    };
+  };
+
   return (
     <Navbar fluid={true} rounded={true}>
       <Navbar.Brand href="/">
         <img src={eLearning} className="w-32" alt="eLearning Logo" />
         <span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
-          E-Learning
+          <span className="text-success">E</span>-Learning
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className="mr-5">
-        <Link to="/" className="text-xl">
+        <NavLink to="/" className="text-xl" style={navLinkStyles} end>
           Home
-        </Link>
-        <Link to="/courses" className="text-xl">
+        </NavLink>
+        <NavLink to="/courses" className="text-xl" style={navLinkStyles}>
           Courses
-        </Link>
-        <Link to="/blog" className="text-xl">
+        </NavLink>
+        <NavLink to="/faq" className="text-xl" style={navLinkStyles}>
+          FAQ
+        </NavLink>
+        <NavLink to="/blog" className="text-xl" style={navLinkStyles}>
           Blog
-        </Link>
+        </NavLink>
         {user ? (
           <>
             <div className="tooltip" data-tip={user?.displayName}>
-              <img className="w-7 rounded-full" src={user?.photoURL} alt="" />
+              <Link to="/user">
+                <div className="flex justify-center">
+                  {user?.photoURL ? (
+                    <img
+                      className="w-7 rounded-full"
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      className="w-7 rounded-full"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png"
+                      alt=""
+                    />
+                  )}
+                </div>
+              </Link>
             </div>
 
-            <Link onClick={handleLogOut} className="text-xl">
+            <button onClick={handleLogOut} className="text-xl">
               Sign Out
-            </Link>
+            </button>
           </>
         ) : (
           <>
-            <Link to="/login" className="text-xl">
+            <NavLink to="/login" className="text-xl" style={navLinkStyles}>
               Sign In
-            </Link>
-            <Link to="/register" className="text-xl">
+            </NavLink>
+            <NavLink to="/register" className="text-xl" style={navLinkStyles}>
               Sign Up
-            </Link>
+            </NavLink>
           </>
         )}
-        <div className="flex">
+        <div className="flex justify-center">
           <label
             htmlFor="Toggle2"
             className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100"
